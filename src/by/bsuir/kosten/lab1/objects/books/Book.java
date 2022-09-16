@@ -1,10 +1,11 @@
 package by.bsuir.kosten.lab1.objects.books;
 
-public class Book {
+public class Book implements Cloneable, Comparable<Book> {
     private String title;
     private String author;
     private int price;
-    private static int edition = 0;
+    private static int edition;
+    public int isbn;
 
     @Override
     public int hashCode() {
@@ -27,12 +28,18 @@ public class Book {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return new Book(title,author,price);
+        return new Book(title,author,price, isbn);
     }
-    public Book(String title, String author, int price) {
+    public Book(String title, String author, int price, int isbn) {
         this.title = title;
         this.author = author;
         this.price = price;
+        this.isbn = isbn;
+    }
+
+    @Override
+    public int compareTo(Book b) {
+        return isbn - b.isbn;
     }
 
     public String getTitle() {
