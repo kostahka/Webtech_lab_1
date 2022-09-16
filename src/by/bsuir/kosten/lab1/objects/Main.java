@@ -2,9 +2,15 @@ package by.bsuir.kosten.lab1.objects;
 
 import by.bsuir.kosten.lab1.implementations.ArrayTasks;
 import by.bsuir.kosten.lab1.implementations.MathTasks;
+import by.bsuir.kosten.lab1.objects.Color;
+import by.bsuir.kosten.lab1.objects.Ball;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("task 1: f(5, 5) = " + MathTasks.firstTask(5, 5));
         System.out.println("task 2: f(3, 5) = " + MathTasks.secondTask(3, 5));
         System.out.println("task 3: tg([0, 5] h=1) = " + MathTasks.thirdTask(0, 5, 1));
@@ -17,9 +23,9 @@ public class Main {
         }
         System.out.println();
 
-        System.out.println("task 5: ");
+        System.out.println("task 4: ");
         ArrayTasks.printPrimalElements(arr);
-        System.out.println("task 6: " + ArrayTasks.getMinNotGrownElements(arr));
+        System.out.println("task 5: " + ArrayTasks.getMinNotGrownElements(arr));
         double[] dArr = new double[]{1.2, 4.3, 1.4, 0.1, 2.6, 9.1, 5.2};
 
         System.out.println("double array: ");
@@ -28,7 +34,7 @@ public class Main {
         }
         System.out.println();
 
-        System.out.println("task 7: ");
+        System.out.println("task 6: ");
         double[][] matrix = ArrayTasks.getNMatrix(dArr);
         for (double[] doubles : matrix) {
             for (double aDouble : doubles) {
@@ -37,7 +43,7 @@ public class Main {
             System.out.println();
         }
 
-        System.out.println("task 8: ");
+        System.out.println("task 7: ");
         ArrayTasks.shellSort(dArr);
         for (double v : dArr) {
             System.out.print(v + ", ");
@@ -52,11 +58,25 @@ public class Main {
         }
         System.out.println();
 
-        System.out.println("task 9: ");
+        System.out.println("task 8: ");
         int[] mergeArr = ArrayTasks.mergeArrays(dArr, secondDArr);
         for (int j : mergeArr) {
             System.out.print(j + ", ");
         }
         System.out.println();
+
+        System.out.println("task 9:");
+        Basket bask = new Basket(new ArrayList());
+        bask.balls.add(new Ball(Color.RED, 1));
+        bask.balls.add(new Ball(Color.BLUE, 2));
+        bask.balls.add(new Ball(Color.RED, 3));
+        bask.balls.add(new Ball(Color.GREEN, 4));
+        bask.balls.add(new Ball(Color.BLUE, 5));
+        bask.balls.add(new Ball(Color.GREEN, 6));
+        bask.balls.add(new Ball(Color.BLUE, 7));
+        System.out.println("Weight of balls = " + bask.getBallsWeight());
+        System.out.println("Blue balls' count = " + bask.getBlueBallsCount());
+
+        System.in.read();
     }
 }
